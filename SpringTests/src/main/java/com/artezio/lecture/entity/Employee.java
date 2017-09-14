@@ -4,6 +4,7 @@ import com.artezio.lecture.enumeration.EmployeeStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -18,13 +19,15 @@ public class Employee implements Serializable {
     private String lastName;
     @Column
     private String email;
-    @ManyToOne
-    @JoinColumn
-    private Office office;
-    @ManyToMany(mappedBy = "office")
-    private List<Project> projects;
     @Column
     @Enumerated(EnumType.STRING)
     private EmployeeStatus status;
+    @Column
+    private LocalDate startDate;
+    @ManyToOne
+    @JoinColumn
+    private Office office;
+    @OneToMany(mappedBy = "employee")
+    private List<ProjectEmployee> projects;
 
 }
