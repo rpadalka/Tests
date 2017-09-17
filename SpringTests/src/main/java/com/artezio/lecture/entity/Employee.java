@@ -14,6 +14,10 @@ public class Employee implements Serializable {
     @Id
     private Integer id;
     @Column
+    private String login;
+    @Column
+    private String cn;
+    @Column
     private String firstName;
     @Column
     private String lastName;
